@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reyaaa & Anish | 1st Anniversary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #ff4757; /* Ok Kanmani Red */
+            --gold: #ffd700;
+            --bg-black: #050505;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+            --success: #2ed573;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-black);
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- SCROLL ANIMATION CLASSES --- */
+        .hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            filter: blur(5px);
+            transition: all 1s ease-out;
+        }
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+        .photo-card:nth-child(2) { transition-delay: 200ms; }
+        .photo-card:nth-child(3) { transition-delay: 400ms; }
+
+        /* --- STARS BACKGROUND --- */
+        .stars {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: -1;
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+            overflow: hidden;
+        }
+        .star {
+            position: absolute; background: white; border-radius: 50%; opacity: 0;
+            animation: twinkle var(--duration) ease-in-out infinite;
+        }
+        @keyframes twinkle {
+            0% { transform: scale(1); opacity: 0; }
+            50% { transform: scale(1.5); opacity: var(--opacity); }
+            100% { transform: scale(1); opacity: 0; }
+        }
+
+        /* --- HERO --- */
+        .hero {
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover; background-position: center;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive; font-size: 3.5rem;
+            color: var(--primary); text-shadow: 0 0 20px rgba(255, 71, 87, 0.4);
+            margin-bottom: 10px;
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        .subtitle { 
+            font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; color: #ccc; 
+            animation: fadeInUp 1.5s ease-out 0.5s backwards;
+        }
+
+        .timer-box {
+            margin-top: 30px; padding: 15px 30px; background: var(--glass);
+            border: 1px solid var(--border); border-radius: 50px;
+            backdrop-filter: blur(5px); box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+            animation: fadeInUp 1.5s ease-out 1s backwards;
+        }
+        #timer { font-size: 1.2rem; font-weight: 600; font-family: 'Courier New', monospace; letter-spacing: 1px; }
+
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- SECTIONS --- */
+        section { padding: 80px 20px; }
+        .section-title {
+            text-align: center; font-family: 'Pacifico', cursive;
+            font-size: 2.5rem; margin-bottom: 50px; color: var(--gold);
+        }
+
+        /* --- PROPOSAL --- */
+        .proposal-section { 
+            background: #0a0a0a; border-top: 1px solid #222; 
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .pixel-box {
+            background: #000; border: 2px solid #333;
+            max-width: 600px; width: 100%; margin: 0 auto; padding: 30px;
+            font-family: 'Press Start 2P', cursive; text-align: left;
+            box-shadow: 0 0 20px rgba(255, 71, 87, 0.1);
+        }
+        .pixel-text { color: #0f0; line-height: 2; font-size: 0.8rem; }
+        .cursor { display: inline-block; width: 8px; height: 12px; background: #0f0; animation: blink 1s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .button-zone {
+            margin-top: 40px; width: 100%; max-width: 600px; height: 200px;
+            position: relative; border: 1px dashed rgba(255,255,255,0.1); border-radius: 10px;
+        }
+        .yes-btn {
+            font-size: 1.2rem; padding: 15px 50px; background: var(--success); color: white; border: none;
+            border-radius: 50px; cursor: pointer; box-shadow: 0 0 20px rgba(46, 213, 115, 0.4);
+            transition: transform 0.2s; position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%); z-index: 10;
+        }
+        .yes-btn:hover { transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 0 40px rgba(46, 213, 115, 0.8); }
+        .no-btn {
+            font-size: 0.9rem; padding: 10px 20px; background: #333; color: #aaa; border: 1px solid #555;
+            border-radius: 50px; position: absolute; left: 20%; top: 20%;
+            transition: all 0.1s ease; z-index: 5; cursor: not-allowed;
+        }
+
+        /* --- GLITCH --- */
+        .glitch-section { padding: 60px 20px; background: #000; display: flex; justify-content: center; }
+        .glitch-container {
+            border: 1px dashed var(--primary); padding: 30px; max-width: 600px; width: 100%;
+            position: relative; background: rgba(255, 71, 87, 0.05); border-radius: 10px;
+        }
+        .glitch-header {
+            position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            background: #000; padding: 0 15px; color: var(--primary);
+            font-family: 'Press Start 2P', cursive; font-size: 0.7rem;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .warning-icon { animation: blink 1s infinite; }
+        .memory-card { text-align: center; margin-top: 10px; }
+        .date-badge {
+            background: var(--primary); color: white; display: inline-block; padding: 5px 15px;
+            border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 15px;
+            font-family: 'Courier New', monospace;
+        }
+        .memory-title { font-family: 'Pacifico', cursive; font-size: 2rem; color: #fff; margin-bottom: 20px; }
+        .memory-log {
+            color: #aaa; font-family: 'Courier New', monospace; line-height: 1.6; font-size: 0.95rem;
+            background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; border-left: 3px solid var(--gold);
+            text-align: left;
+        }
+        .heart-pulse { font-size: 3rem; margin-top: 20px; animation: heartbeat 1.5s infinite; }
+        @keyframes heartbeat {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; text-shadow: 0 0 20px var(--primary); }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        /* --- BREAKS GUESSER (NEW) --- */
+        .break-section { background: #080808; text-align: center; }
+        .retro-input {
+            background: #222; border: 2px solid #444; color: #fff; padding: 10px;
+            font-family: 'Press Start 2P'; width: 100px; text-align: center; margin-right: 10px;
+        }
+        .retro-btn {
+            background: var(--primary); border: 2px solid var(--primary); color: #fff;
+            padding: 10px 20px; font-family: 'Press Start 2P'; cursor: pointer;
+            transition: all 0.2s;
+        }
+        .retro-btn:hover { background: transparent; color: var(--primary); }
+
+        /* --- MOSAIC --- */
+        .mosaic-section { background: #111; padding: 80px 20px; text-align: center; }
+        .mosaic-container {
+            position: relative; max-width: 800px; margin: 0 auto;
+            border: 1px solid #333; box-shadow: 0 0 30px rgba(255, 71, 87, 0.1);
+        }
+        .mosaic-img { width: 100%; display: block; cursor: none; }
+        .magnifier-glass {
+            position: absolute; border: 2px solid var(--primary); border-radius: 50%;
+            cursor: none; width: 120px; height: 120px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.8);
+            display: none; z-index: 10;
+            background-repeat: no-repeat; background-color: #111;
+        }
+
+        /* --- GALLERY --- */
+        .gallery-section { background: #050505; }
+        .gallery-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px; max-width: 1000px; margin: 0 auto;
+        }
+        .photo-card {
+            background: #fff; padding: 12px; padding-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: all 0.4s ease;
+            transform: rotate(-2deg);
+        }
+        .photo-card:nth-child(even) { transform: rotate(2deg); }
+        .photo-card:hover { transform: scale(1.05) rotate(0deg) translateY(-10px); z-index: 10; }
+        .placeholder-img {
+            width: 100%; height: 280px; background-color: #eee;
+            object-fit: cover; display: flex; align-items: center; justify-content: center;
+            color: #555;
+        }
+
+        /* --- SCREENSHOT GRID --- */
+        .screenshot-section {
+            padding: 80px 20px;
+            background: #080808;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .screen-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .screen-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-color: var(--primary);
+            z-index: 10;
+        }
+
+        .chat-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .screen-card:hover .chat-img {
+            opacity: 1;
+        }
+
+        .chat-caption {
+            padding: 15px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #888;
+            font-family: 'Courier New', monospace;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        @media (min-width: 768px) {
+            .screen-card.wide {
+                grid-column: span 2;
+            }
+        }
+
+        /* --- BUCKET LIST --- */
+        .bucket-section { background: #0a0a0a; }
+        .bucket-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px; max-width: 1000px; margin: 0 auto;
+        }
+        .bucket-card {
+            background: linear-gradient(145deg, #111, #161616); border: 1px solid #222;
+            border-radius: 15px; padding: 25px; position: relative; overflow: hidden;
+            transition: all 0.2s ease; display: flex; align-items: center;
+            cursor: pointer; user-select: none;
+        }
+        .bucket-card:active { transform: scale(0.95); }
+        .bucket-card:hover {
+            border-color: var(--primary); box-shadow: 0 0 20px rgba(255, 71, 87, 0.1);
+            transform: translateY(-5px);
+        }
+        .bucket-icon {
+            font-size: 2rem; margin-right: 15px; background: #222; width: 50px; height: 50px;
+            display: flex; align-items: center; justify-content: center; border-radius: 50%;
+        }
+        .bucket-info h3 { font-size: 1rem; color: #fff; margin-bottom: 5px; }
+        .bucket-info p { font-size: 0.8rem; color: #777; text-transform: uppercase; letter-spacing: 1px; }
+        .bucket-card.major { border: 1px solid rgba(255, 215, 0, 0.2); }
+        .bucket-card.major .bucket-icon { background: rgba(255, 215, 0, 0.1); color: var(--gold); }
+
+        /* --- RING SIMULATOR --- */
+        .ring-section { background: #000; padding: 100px 20px; text-align: center; position: relative; overflow: hidden; }
+        .ring-container {
+            width: 200px; height: 200px; margin: 0 auto 40px auto;
+            position: relative; perspective: 1000px;
+        }
+        .holographic-ring {
+            width: 100%; height: 100%; border-radius: 50%;
+            border: 4px solid var(--gold);
+            box-shadow: 0 0 30px var(--gold), inset 0 0 20px var(--gold);
+            transform-style: preserve-3d;
+            animation: rotateRing 8s linear infinite;
+            position: absolute; left: 0; top: 0;
+            transition: transform 0.3s ease;
+        }
+        .holographic-ring::after {
+            content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border-radius: 50%; border: 1px solid rgba(255,215,0, 0.3);
+            transform: rotateX(90deg);
+        }
+        @keyframes rotateRing {
+            0% { transform: rotateY(0deg) rotateX(45deg); }
+            100% { transform: rotateY(360deg) rotateX(45deg); }
+        }
+        .slider-container { max-width: 400px; margin: 0 auto; }
+        input[type=range] {
+            width: 100%; -webkit-appearance: none; appearance: none; background: #333; height: 5px; border-radius: 5px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: var(--primary);
+            border-radius: 50%; cursor: pointer; box-shadow: 0 0 10px var(--primary);
+        }
+        .status-msg { margin-top: 20px; font-family: 'Courier New'; color: var(--success); opacity: 0; transition: opacity 0.5s; }
+
+        /* --- GRAND FINALE --- */
+        .finale-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: black; z-index: 9999;
+            display: none; flex-direction: column; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 2s ease;
+        }
+        .finale-text {
+            font-family: 'Pacifico', cursive; font-size: 3rem; color: var(--primary);
+            text-align: center; margin-bottom: 50px;
+            transform: translateY(20px); opacity: 0; transition: all 1s ease;
+        }
+        .final-btn-zone { position: relative; width: 300px; height: 100px; text-align: center; }
+
+        /* --- FOOTER & MODALS --- */
+        .footer-letter { padding: 100px 20px; background: #000; text-align: center; border-top: 1px solid #111; }
+        .letter-content { max-width: 600px; margin: 0 auto; color: #888; line-height: 1.8; font-style: italic; }
+
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; backdrop-filter: blur(5px);
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-box {
+            background: #111; border: 1px solid var(--primary); padding: 30px; border-radius: 20px;
+            max-width: 90%; width: 400px; text-align: center; transform: scale(0.8);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 30px rgba(255, 71, 87, 0.3);
+        }
+        .modal-overlay.active .modal-box { transform: scale(1); }
+        .modal-icon { font-size: 3rem; margin-bottom: 15px; display: block; }
+        .modal-text { color: #fff; font-size: 1.1rem; margin-bottom: 20px; line-height: 1.5; }
+        .modal-btn {
+            background: var(--primary); color: white; border: none; padding: 10px 25px;
+            border-radius: 50px; cursor: pointer; font-family: 'Poppins'; font-weight: 600;
+        }
+
+        .music-btn {
+            position: fixed; bottom: 30px; right: 30px;
+            background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2);
+            padding: 15px; border-radius: 50%; cursor: pointer; z-index: 100; font-size: 1.2rem;
+            backdrop-filter: blur(5px); transition: all 0.3s;
+        }
+        .music-btn:hover { background: var(--primary); border-color: var(--primary); }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .bucket-grid { grid-template-columns: 1fr; }
+            .finale-text { font-size: 2rem; padding: 0 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars" id="star-container"></div>
+    <button class="music-btn" onclick="toggleMusic()">🎵</button>
+    <audio id="bg-music" loop><source src="song.mp3" type="audio/mpeg"></audio>
+    <audio id="end-music" loop><source src="ending.mp3" type="audio/mpeg"></audio>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box">
+            <span class="modal-icon" id="modalIcon">✨</span>
+            <p class="modal-text" id="modalText">Placeholder Text</p>
+            <button class="modal-btn" onclick="closeModal()">Okay!</button>
+        </div>
+    </div>
+
+    <div class="finale-overlay" id="finaleOverlay">
+        <div class="finale-text" id="finaleText">
+            Will you stop saying Pakalam...<br>
+            and just be mine forever?
+        </div>
+        <div class="final-btn-zone">
+            <button class="yes-btn" onclick="bigYes()">YES 💖</button>
+            <button class="no-btn" id="final-no-btn">No</button>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Reyaaa & Anish</h1>
+            <div class="subtitle">Since Jan 16</div>
+            <br>
+            <div class="timer-box"><div id="timer">Loading Timeline...</div></div>
+        </div>
+    </section>
+
+    <section class="proposal-section">
+        <h2 class="section-title hidden" style="color:#fff; opacity: 0.9;">The Query</h2>
+        <div class="pixel-box hidden">
+            <p class="pixel-text">
+                > SYSTEM LOG: Jan 16<br>
+                > LOCATION: Earth<br>
+                > ANISH.EXE running query...<br>
+                > Input: "girlfriend?"<br>
+                > ...<br>
+                > Reyaaa.response: "Pakalam" (Let's see)<br>
+                > ...<br>
+                > SYSTEM ALERT: ⚠️ Infinite Loop Detected.<br>
+                > STATUS: I took "Let's see" as a "Yes" and deployed to production anyway.<br>
+                <span class="cursor"></span>
+            </p>
+        </div>
+        <p class="hidden" style="margin-top: 20px; opacity: 0.4; font-size: 0.8rem; text-align:center;">(Still waiting for the official merge request approval...)</p>
+        <div class="button-zone hidden" id="btnZone">
+            <button class="yes-btn" onclick="confirmLove()">YES 💖</button>
+            <button class="no-btn" id="runaway-btn">Pakalam 🙄</button>
+        </div>
+    </section>
+
+    <section class="glitch-section">
+        <div class="glitch-container hidden">
+            <div class="glitch-header">
+                <span class="warning-icon">⚠️</span>
+                <span>SYSTEM ANOMALY DETECTED</span>
+                <span class="warning-icon">⚠️</span>
+            </div>
+            <div class="memory-card">
+                <div class="date-badge">MAY 04</div>
+                <h3 class="memory-title">The "Morning Before NEET" Glitch</h3>
+                <p class="memory-log">
+                    > LOCATION: Reyaaa's Home.<br>
+                    > TIME: Pre-Exam Departure.<br>
+                    > THREAT LEVEL: <strong>Extreme.</strong> (Producer was upstairs).<br>
+                    > ACTION: She hugged me.<br>
+                    > MY_RESPONSE: <strong>Forehead_Kiss.exe</strong> (Executed in Stealth Mode)<br>
+                    <br>
+                    <span style="color: #fff; font-style: italic; opacity: 0.9;">
+                        "I didn't plan it. I promise."
+                    </span>
+                </p>
+                <div class="heart-pulse">💋</div>
+                <p style="font-size: 0.7rem; color: #555; margin-top: 10px;">(Status: Mission Successful. Undetected.)</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="break-section">
+        <h2 class="section-title hidden">System Stability Check</h2>
+        <div class="pixel-box hidden" style="text-align: center;">
+            <p class="pixel-text">
+                > RUNNING DIAGNOSTIC...<br>
+                > CHECKING UPTIME...<br>
+                > ERROR: Connection interruptions detected.<br>
+                <br>
+                Guess how many "Breaks" we had this year?
+            </p>
+            <div style="margin-top: 20px;">
+                <input type="number" id="breakInput" placeholder="0" class="retro-input">
+                <button onclick="checkBreaks()" class="retro-btn">CHECK</button>
+            </div>
+            <p id="breakMessage" style="margin-top: 20px; font-family: 'Courier New'; color: var(--gold); min-height: 1.2em;"></p>
+        </div>
+    </section>
+
+    <section class="mosaic-section">
+        <h2 class="section-title hidden">The Big Picture</h2>
+        <p class="hidden" style="color: #aaa; margin-bottom: 20px; font-style: italic;">
+            The photos i stare at night.
+        </p>
+        <div class="mosaic-container hidden" onmouseleave="hideLens()">
+            <div id="lens" class="magnifier-glass"></div>
+            <img id="mosaic-target" src="mosaic.jpeg" class="mosaic-img" alt="Our Mosaic" onmousemove="moveLens(event)">
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <h2 class="section-title hidden">The Headquarters:<br>Tambaram Atti</h2>
+        <p class="hidden" style="text-align: center; color: #666; max-width: 600px; margin: 0 auto 40px auto; font-style: italic;">
+            The only place she came to.
+        </p>
+        <div class="gallery-grid">
+            <div class="photo-card hidden">
+                <img src="image copy.png" class="placeholder-img" alt="First Visit">
+                <p style="color: black; text-align: center; margin-top: 15px; font-family: 'Pacifico';">Visit #1: The Beginning</p>
+            </div>
+            <div class="photo-card hidden">
+                <img src="WhatsApp Image 2026-01-15 at 21.24.29.jpeg" class="placeholder-img" alt="Late Valentine">
+                <p style="color: black; text-align: center; margin-top: 15px; font-family: 'Pacifico';">Late Valentine (Feb 19)</p>
+            </div>
+            <div class="photo-card hidden">
+                <img src="image.png" class="placeholder-img" alt="Favorite">
+                <p style="color: black; text-align: center; margin-top: 15px; font-family: 'Pacifico';">My Favourite Picture</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="screenshot-section">
+        <h2 class="section-title hidden">Log Files (Evidence)</h2>
+        <p class="hidden" style="text-align: center; color: #666; margin-bottom: 40px; font-style: italic;">
+            Some messages deserve to be framed.
+        </p>
+
+        <div class="screenshot-grid">
+
+            <div class="screen-card wide hidden">
+                <img src="image copy 2.png" class="chat-img" alt="The Proposal Chat">
+                <div class="chat-caption">> LOG: The "first valentine's day" Incident</div>
+            </div>
+
+            <div class="screen-card hidden">
+                <img src="image copy 3.png" class="chat-img" alt="Funny Chat">
+                <div class="chat-caption">> LOG:how my day starts.......</div>
+            </div>
+
+            <div class="screen-card hidden">
+                <img src="image copy 4.png" class="chat-img" alt="Cute Chat">
+                <div class="chat-caption">> LOG:....... how my day ends</div>
+            </div>
+
+            <div class="screen-card hidden">
+                <img src="image copy 5.png" class="chat-img" alt="Another Memory">
+                <div class="chat-caption">> LOG: "easy ragebait "</div>
+            </div>
+
+            <div class="screen-card hidden">
+                <img src="image copy 6.png" class="chat-img" alt="Recent Chat">
+                <div class="chat-caption">> LOG: The MOST assuring thing one could hope for</div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="bucket-section">
+        <h2 class="section-title hidden">Project Roadmap</h2>
+        <div class="bucket-grid">
+            <div class="bucket-card major hidden" onclick="showPopup('newyear')"><div class="bucket-icon">🎆</div><div class="bucket-info"><h3>New Year Celebration</h3><p>Priority: High</p></div></div>
+            <div class="bucket-card hidden" onclick="showPopup('hillstation')"><div class="bucket-icon">🏔️</div><div class="bucket-info"><h3>Hill Station Tour</h3><p>Ooty • Kodaikanal • Manali</p></div></div>
+            <div class="bucket-card hidden" onclick="showPopup('ladakh')"><div class="bucket-icon">🏍️</div><div class="bucket-info"><h3>Ladakh</h3><p>Adventure Mode</p></div></div>
+            <div class="bucket-card major hidden" onclick="showPopup('abroad')"><div class="bucket-icon">✈️</div><div class="bucket-info"><h3>2 Years Abroad</h3><p>The Big Plan</p></div></div>
+            <div class="bucket-card hidden" onclick="showPopup('maldives')"><div class="bucket-icon">🏝️</div><div class="bucket-info"><h3>Maldives</h3><p>Relaxation Mode</p></div></div>
+            <div class="bucket-card hidden" onclick="showPopup('paris')"><div class="bucket-icon">🗼</div><div class="bucket-info"><h3>Paris</h3><p>Romance Mode</p></div></div>
+            <div class="bucket-card major hidden" onclick="showPopup('japan')"><div class="bucket-icon">🇯🇵</div><div class="bucket-info"><h3>Japan</h3><p>Dream Destination</p></div></div>
+            <div class="bucket-card hidden" onclick="showPopup('football')"><div class="bucket-icon">⚽</div><div class="bucket-info"><h3>Football Match 😭</h3><p>(Please?)</p></div></div>
+            <div class="bucket-card hidden" onclick="showPopup('trampoline')"><div class="bucket-icon">🦘</div><div class="bucket-info"><h3>Trampoline</h3><p>Jump</p></div></div>
+            <div class="bucket-card hidden" onclick="showPopup('cruise')"><div class="bucket-icon">🚢</div><div class="bucket-info"><h3>Cruise Vacation</h3><p>Sailing Soon</p></div></div>
+            <div class="bucket-card major hidden" style="border-color: #ff4757;" onclick="showPopup('secret')"><div class="bucket-icon" style="color: #ff4757;">🤫</div><div class="bucket-info"><h3>Secret Trip</h3><p>Place with No People</p></div></div>
+        </div>
+    </section>
+
+    <section class="ring-section">
+        <h2 class="section-title hidden" style="margin-bottom: 20px;">Fit Check</h2>
+        <p class="hidden" style="color: #aaa; margin-bottom: 40px;">Adjust the ring size. You know... for data collection purposes. 🤫</p>
+        
+        <div class="ring-container hidden">
+            <div class="holographic-ring" id="holoRing"></div>
+        </div>
+
+        <div class="slider-container hidden">
+            <input type="range" min="1" max="100" value="1" id="ringSlider">
+        </div>
+        <p class="status-msg" id="ringStatus">Calibrating...</p>
+    </section>
+
+    <footer class="footer-letter">
+        <div class="letter-content">
+            <h2 style="font-family: 'Pacifico'; margin-bottom: 20px; color: var(--primary);">To My Reyaaa,</h2>
+            <p>From a dumb "girlfriend?" query to "Pakalam", and finally to eating at Atti (the only place you agreed to come to).<br><br>We have a lot of hills to climb (literally, look at that list) and a lot of world to see.<br>Happy 1st Anniversary.</p>
+            <br><h3 style="margin-top: 20px;">Love,<br>Anish</h3>
+        </div>
+    </footer>
+
+    <script>
+        // --- 0. SCROLL ANIMATION LOGIC ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, {
+            threshold: 0.1 // Triggers when 10% of element is visible
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+
+        // --- 1. POPUP MESSAGES ---
+        const messages = {
+            newyear: { icon: "🎆", text: "still waiting for that 💖" },
+            hillstation: { icon: "🥶", text: "hope we don't make a baby there." },
+            ladakh: { icon: "🏍️", text: "can I hug you tight to escape from the cold please?... (Hope you like bikes!)" },
+            abroad: { icon: "🌍", text: "Un PG than nama honeymoon." },
+            maldives: { icon: "🏖️", text: "Just you, me, and blue water. No stress, no dress." },
+            paris: { icon: "🥐", text: "I Practice daily to kiss you in front of the eiffle tower." },
+            japan: { icon: "🍣", text: "hakuna matata babyyyyyy." },
+            football: { icon: "😭", text: "you and me in a Barcelona shirt? PLEASE" },
+            trampoline: { icon: "🤸", text: "Don't break a bone please. We have places to travel!" },
+            cruise: { icon: "🚢", text: "Titanic pose incoming... (but with a happier ending!)" },
+            secret: { icon: "🤫", text: "YOU KNOW WHAT HAPPENS WHEN THEY LEAVE US ALONE." }
+        };
+
+        function showPopup(key) {
+            const modal = document.getElementById('modalOverlay');
+            const icon = document.getElementById('modalIcon');
+            const text = document.getElementById('modalText');
+            if(messages[key]) {
+                icon.innerHTML = messages[key].icon; text.innerHTML = messages[key].text; modal.classList.add('active');
+            }
+        }
+        function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); }
+        document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+
+        // --- 2. RUNAWAY BUTTON ---
+        const noBtn = document.getElementById('runaway-btn');
+        const btnZone = document.getElementById('btnZone');
+        const moveBtn = () => {
+            const zoneWidth = btnZone.offsetWidth; const zoneHeight = btnZone.offsetHeight;
+            const btnWidth = noBtn.offsetWidth; const btnHeight = noBtn.offsetHeight;
+            const newX = Math.random() * (zoneWidth - btnWidth);
+            const newY = Math.random() * (zoneHeight - btnHeight);
+            noBtn.style.left = `${newX}px`; noBtn.style.top = `${newY}px`;
+        }
+        noBtn.addEventListener('mouseover', moveBtn); noBtn.addEventListener('touchstart', moveBtn);
+
+        function confirmLove() {
+            const modal = document.getElementById('modalOverlay');
+            const icon = document.getElementById('modalIcon');
+            const text = document.getElementById('modalText');
+            icon.innerHTML = "💖";
+            text.innerHTML = "Request Accepted! <br> No more 'Pakalam'. <br> Happy Anniversary Reyaaa.";
+            modal.classList.add('active');
+            for(let i=0; i<30; i++) { createHeart(); }
+        }
+
+        // --- 3. BREAKS GUESSER ---
+        function checkBreaks() {
+            const val = document.getElementById('breakInput').value;
+            const msg = document.getElementById('breakMessage');
+            if (val == 3) {
+                msg.innerHTML = "Correct. 3 Breaks.<br>ithuku mela etha panina kondruven una.<br>";
+                msg.style.color = "#2ed573";
+            } else if (val < 3) {
+                msg.innerHTML = "avlo kamiya ila ";
+                msg.style.color = "#ff4757";
+            } else {
+                msg.innerHTML = "avlo ilaa..romba aasa padatha";
+                msg.style.color = "#ff4757";
+            }
+        }
+
+        // --- 4. MOSAIC ZOOM ---
+        function moveLens(e) {
+            const img = document.getElementById('mosaic-target');
+            const lens = document.getElementById('lens');
+            const cx = 3; 
+            if (!lens.style.backgroundImage) {
+                lens.style.backgroundImage = "url('" + img.src + "')";
+                lens.style.backgroundSize = (img.width * cx) + "px " + (img.height * cx) + "px";
+            }
+            lens.style.display = "block";
+            const pos = getCursorPos(e, img);
+            let x = pos.x; let y = pos.y;
+            if (x > img.width - (lens.offsetWidth / 2)) { x = img.width - (lens.offsetWidth / 2); }
+            if (x < lens.offsetWidth / 2) { x = lens.offsetWidth / 2; }
+            if (y > img.height - (lens.offsetHeight / 2)) { y = img.height - (lens.offsetHeight / 2); }
+            if (y < lens.offsetHeight / 2) { y = lens.offsetHeight / 2; }
+            lens.style.left = (x - lens.offsetWidth / 2) + "px";
+            lens.style.top = (y - lens.offsetHeight / 2) + "px";
+            lens.style.backgroundPosition = "-" + ((x * cx) - lens.offsetWidth / 2) + "px -" + ((y * cx) - lens.offsetHeight / 2) + "px";
+        }
+        function getCursorPos(e, img) {
+            let a, x = 0, y = 0; e = e || window.event;
+            a = img.getBoundingClientRect();
+            x = e.pageX - a.left; y = e.pageY - a.top;
+            x = x - window.pageXOffset; y = y - window.pageYOffset;
+            return {x : x, y : y};
+        }
+        function hideLens() { document.getElementById('lens').style.display = "none"; }
+
+        // --- 5. RING SIMULATOR & FINALE ---
+        const ringSlider = document.getElementById('ringSlider');
+        const holoRing = document.getElementById('holoRing');
+        const ringStatus = document.getElementById('ringStatus');
+        
+        ringSlider.addEventListener('input', function() {
+            let val = this.value;
+            let scale = 0.5 + (val / 100); 
+            holoRing.style.transform = `scale(${scale})`;
+            
+            if (val > 85 && val < 95) { 
+                ringStatus.style.opacity = '1';
+                ringStatus.innerHTML = "PERFECT FIT DETECTED! <br> SAVING DATA...";
+                setTimeout(triggerFinale, 2000); 
+            } else {
+                ringStatus.style.opacity = '0.5';
+                ringStatus.innerHTML = "Calibrating size...";
+            }
+        });
+
+        function triggerFinale() {
+            const overlay = document.getElementById('finaleOverlay');
+            const text = document.getElementById('finaleText');
+            const bgMusic = document.getElementById('bg-music');
+            const endMusic = document.getElementById('end-music');
+
+            if (endMusic.duration > 0 || endMusic.readyState >= 1) {
+                bgMusic.pause();
+                endMusic.play();
+            }
+
+            overlay.style.display = 'flex';
+            setTimeout(() => { overlay.style.opacity = '1'; }, 100);
+            setTimeout(() => { text.style.opacity = '1'; text.style.transform = 'translateY(0)'; }, 1500);
+
+            const finalNoBtn = document.getElementById('final-no-btn');
+            finalNoBtn.addEventListener('mouseover', moveFinalBtn);
+            finalNoBtn.addEventListener('touchstart', moveFinalBtn);
+        }
+
+        function moveFinalBtn() {
+            const btn = document.getElementById('final-no-btn');
+            const x = Math.random() * 200 - 100;
+            const y = Math.random() * 200 - 100;
+            btn.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        function bigYes() {
+            alert("I KNEW IT! ❤️ See you at the altar (eventually).");
+            for(let i=0; i<100; i++) { createHeart(); }
+            
+            const overlay = document.getElementById('finaleOverlay');
+            const text = document.getElementById('finaleText');
+            const btnZone = document.querySelector('.final-btn-zone');
+            
+            overlay.style.background = "radial-gradient(circle, #222, #000)";
+            text.innerHTML = "FOREVER STARTING NOW.<br><span style='font-size:1rem; color:#aaa; margin-top:10px; display:block;'>(Welcome to the rest of our lives)</span>";
+            
+            btnZone.innerHTML = `
+                <button class="yes-btn" style="position: relative; transform: none; left: auto; top: auto; margin-top: 20px;" onclick="closeFinale()">
+                    Explore Memories ⬇️
+                </button>
+            `;
+        }
+
+        function closeFinale() {
+            const overlay = document.getElementById('finaleOverlay');
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 1000);
+        }
+
+        // --- 6. GENERAL ---
+        function createStars() {
+            const container = document.getElementById('star-container');
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div'); star.className = 'star';
+                const x = Math.random() * 100; const y = Math.random() * 100;
+                const size = Math.random() * 3; const duration = Math.random() * 3 + 2; const opacity = Math.random();
+                star.style.left = x + '%'; star.style.top = y + '%'; star.style.width = size + 'px'; star.style.height = size + 'px';
+                star.style.setProperty('--duration', duration + 's'); star.style.setProperty('--opacity', opacity);
+                container.appendChild(star);
+            }
+        }
+        createStars();
+
+        function createHeart() {
+            const heart = document.createElement('div'); heart.classList.add('star'); heart.innerHTML = '💖';
+            heart.style.position = 'fixed'; heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+            heart.style.left = Math.random() * 100 + 'vw'; heart.style.top = '100vh';
+            heart.style.animation = 'floatUp 5s linear forwards';
+            document.body.appendChild(heart); setTimeout(() => heart.remove(), 5000);
+        }
+
+        const startDate = new Date("Jan 16, 2025 00:00:00").getTime();
+        setInterval(function() {
+            const now = new Date().getTime(); const distance = now - startDate;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        }, 1000);
+
+        let isPlaying = false; const audio = document.getElementById("bg-music");
+        function toggleMusic() {
+            if (isPlaying) { audio.pause(); document.querySelector('.music-btn').innerHTML = "🎵"; document.querySelector('.music-btn').style.background = "rgba(255,255,255,0.1)"; }
+            else { audio.play(); document.querySelector('.music-btn').innerHTML = "⏸"; document.querySelector('.music-btn').style.background = "#ff4757"; }
+            isPlaying = !isPlaying;
+        }
+    </script>
+</body>
+</html>
