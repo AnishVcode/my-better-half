@@ -484,8 +484,8 @@
 
     <div class="stars" id="star-container"></div>
     <button class="music-btn" onclick="toggleMusic()">🎵</button>
-    <audio id="bg-music" loop><source src="song.mp3" type="audio/mpeg"></audio>
-    <audio id="end-music" loop><source src="ending.mp3" type="audio/mpeg"></audio>
+    <audio id="bg-music" loop><source src="A.R._Rahman_Jonita_Gandhi_-_Mental_Manadhil_From_O_Kadhal_Kanmani_(mp3.pm).mp3" type="audio/mpeg"></audio>
+    <audio id="end-music" loop><source src="" type="audio/mpeg"></audio>
 
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-box">
@@ -953,6 +953,16 @@
             else { audio.play(); document.querySelector('.music-btn').innerHTML = "⏸"; document.querySelector('.music-btn').style.background = "#ff4757"; }
             isPlaying = !isPlaying;
         }
+        // Auto-play music on page load
+        window.addEventListener('load', function() {
+            audio.play().then(() => {
+                isPlaying = true;
+                document.querySelector('.music-btn').innerHTML = "⏸";
+                document.querySelector('.music-btn').style.background = "#ff4757";
+            }).catch(() => {
+                // Autoplay blocked by browser - user needs to click first
+            });
+        });
     </script>
 </body>
 </html>
